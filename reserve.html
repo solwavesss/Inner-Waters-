@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Reserve My Spot · Inner Waters</title>
+<meta name="description" content="Reserve your spot at the Inner Waters Silent Retreat at Naum, Tulum.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap">
+<!-- RESERVE MY SPOT PAGE. Every "Reserve My Spot" and "Book a Call" button on the main page opens this page.
+     Keep it in the same folder as index.html. -->
+<style>
+:root {
+  --limestone: #EEE9DF; --sand: #E2DACB; --ink: #2B2D27; --muted: #6B6A5E; --water: #2F5651; --line: #CFC6B4; --mist: #F7F4EE;
+  --display: "Cormorant Garamond", Garamond, "Times New Roman", serif;
+  --body: "Jost", "Futura", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--limestone); color: var(--ink); font-family: var(--body); font-weight: 300; font-size: 17px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--water); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 300; line-height: 1.1; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-size: 12px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--water); }
+.stack { display: flex; flex-direction: column; gap: 18px; }
+.center { text-align: center; align-items: center; }
+header { background: var(--ink); color: var(--mist); }
+header .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-block: 22px; flex-wrap: wrap; }
+.wordmark { font-family: var(--display); font-size: 20px; letter-spacing: .32em; text-transform: uppercase; text-decoration: none; }
+.back { font-size: 12px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; }
+.back:hover { text-decoration: underline; text-underline-offset: 5px; }
+section { padding-block: clamp(56px, 8vw, 96px); }
+section.alt { background: var(--sand); }
+h1 { font-size: clamp(44px, 7vw, 80px); }
+.h2 { font-size: clamp(32px, 4.4vw, 52px); }
+.ebd { font-family: var(--display); font-style: italic; font-size: 24px; color: var(--water); }
+.btn { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; padding: 16px 28px; border: 1px solid currentColor; transition: background .3s, color .3s; }
+.btn.solid { background: var(--water); border-color: var(--water); color: var(--mist); }
+.btn:hover, .btn.solid:hover { background: var(--ink); border-color: var(--ink); color: var(--mist); }
+.options { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: 0 auto; width: 100%; }
+.opt { background: var(--mist); border: 1px solid var(--line); padding: 32px 28px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.opt h2 { font-size: 32px; font-weight: 400; }
+.phone { font-family: var(--display); font-size: 30px; color: var(--water); font-variant-numeric: lining-nums; margin-top: auto; }
+.opt .btn { align-self: flex-start; }
+.terms { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.terms div { padding: 24px 20px 26px 0; min-width: 0; }
+.terms div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.terms b { display: block; font-family: var(--display); font-weight: 400; font-size: 26px; color: var(--water); line-height: 1.15; margin-bottom: 6px; font-variant-numeric: lining-nums; }
+.terms span { font-size: 15px; }
+.rooms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.room { background: var(--mist); border: 1px solid var(--line); padding: 26px 24px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.room h3 { font-size: 26px; font-weight: 400; }
+.sub { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.prices { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+.tier { font-size: 11px; font-weight: 500; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.prices ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 14px; line-height: 1.4; }
+.prices b { display: block; font-family: var(--display); font-weight: 500; font-size: 24px; font-variant-numeric: lining-nums; }
+.eb .tier, .eb b { color: var(--water); }
+.note { font-size: 14px; font-style: italic; color: var(--muted); margin-top: auto; }
+footer { background: var(--ink); color: #CFCABF; font-size: 13px; letter-spacing: .1em; }
+footer .wrap { padding-block: 32px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+@media (max-width: 900px) { .rooms { grid-template-columns: 1fr; } .terms { grid-template-columns: 1fr 1fr; } .terms div:nth-child(3) { padding-left: 0; border-left: 0; } .terms div:nth-child(n+3) { border-top: 1px solid var(--line); } }
+@media (max-width: 640px) { .options { grid-template-columns: 1fr; } }
+@media (max-width: 460px) { .terms { grid-template-columns: 1fr; } .terms div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="wordmark" href="index.html">Inner Waters</a>
+    <a class="back" href="index.html">&larr; Back to the retreat</a>
+  </div>
+</header>
+
+<main>
+<!-- ============ BOOKING ============ -->
+<section>
+  <div class="wrap stack" style="gap:44px">
+    <div class="stack center">
+      <p class="eyebrow">Inner Waters Silent Retreat · Naum, Tulum</p>
+      <h1>Reserve My Spot</h1>
+      <p style="max-width:40ch">To book your spot, send us a message or call. We will help you choose your room and reserve your spot.</p>
+      <p class="ebd">Early Bird pricing ends December 24th.</p>
+    </div>
+    <div class="options">
+      <article class="opt">
+        <p class="eyebrow">Option 1</p>
+        <h2>Send a Message</h2>
+        <p>Message us on WhatsApp with any questions, or to reserve your spot.</p>
+        <p class="phone">+52 984 449 0049</p>
+        <a class="btn solid" href="https://wa.me/529844490049" target="_blank" rel="noopener">Message on WhatsApp &rarr;</a>
+      </article>
+      <article class="opt">
+        <p class="eyebrow">Option 2</p>
+        <h2>Call</h2>
+        <p>Call the retreat hosts to ask questions and reserve your spot.</p>
+        <p class="phone">+52 984 449 0049</p>
+        <a class="btn" href="tel:+529844490049">Call Now &rarr;</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAYMENT ============ -->
+<section class="alt">
+  <div class="wrap stack" style="gap:32px">
+    <div class="stack center">
+      <p class="eyebrow">Payment</p>
+      <h2 class="h2">How payment works</h2>
+    </div>
+    <div class="terms">
+      <div><b>December 24th</b><span>Early Bird pricing ends</span></div>
+      <div><b>50% deposit</b><span>Due now to reserve your spot</span></div>
+      <div><b>50% balance</b><span>Due January 30</span></div>
+      <div><b>Wise or Zelle</b><span>Payments are made through Wise or Zelle</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section>
+  <div class="wrap stack" style="gap:36px">
+    <div class="stack center">
+      <p class="eyebrow">4 Days · 3 Nights</p>
+      <h2 class="h2">Retreat Investment</h2>
+    </div>
+    <div class="rooms">
+      <article class="room">
+        <h3>Naum Private Room in the Main Lodge</h3>
+        <p class="sub">2 bedrooms · King-size bed in each</p>
+        <div class="prices">
+          <div><p class="tier">Regular</p><ul><li><b>$2,800</b>for 2 people</li><li><b>$2,500</b>for 1 person</li></ul></div>
+          <div class="eb"><p class="tier">Early Bird</p><ul><li><b>$2,600</b>for 2 people</li><li><b>$2,300</b>for 1 person</li></ul></div>
+        </div>
+      </article>
+      <article class="room">
+        <h3>Naum Shared Bedroom in the Main Lodge</h3>
+        <p class="sub">Shared by 6 people</p>
+        <div class="prices">
+          <div><p class="tier">Regular</p><ul><li><b>$1,300</b>per person</li></ul></div>
+          <div class="eb"><p class="tier">Early Bird</p><ul><li><b>$1,100</b>per person</li></ul></div>
+        </div>
+      </article>
+      <article class="room">
+        <h3>Naum Private Jungle Cabin</h3>
+        <p class="sub">Closer to the cenote · Shared cabin for 2 people</p>
+        <div class="prices">
+          <div><p class="tier">Regular</p><ul><li><b>$1,700</b>per person</li></ul></div>
+          <div class="eb"><p class="tier">Early Bird</p><ul><li><b>$1,500</b>per person (2 separate)</li></ul></div>
+        </div>
+        <p class="note">Note: Since this cabin is deeper in the jungle, there is no hot shower, but guests will have access to hot showers in the main villa.</p>
+      </article>
+    </div>
+    <div class="stack center">
+      <a class="btn solid" href="https://wa.me/529844490049" target="_blank" rel="noopener">Reserve on WhatsApp &rarr;</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Inner Waters Silent Retreat · Naum · Tulum, Quintana Roo, Mexico</span>
+    <span>WhatsApp or call +52 984 449 0049</span>
+  </div>
+</footer>
+
+</body>
+</html>
